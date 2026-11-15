@@ -1,0 +1,270 @@
+<!-- 01 · COUVERTURE -->
+<section data-label="Couverture" class="s s-cover">
+  <div class="bloom" style="width:1000px;height:900px;left:300px;top:260px"></div>
+  <div class="ember" style="width:620px;height:620px;left:-220px;top:-240px"></div>
+  <div class="photo" style="left:1120px;top:0;width:800px;height:1080px;background-image:url(__AMB__);background-position:46% 50%"></div>
+  <div class="date-wrap" style="position:absolute;left:1120px;top:810px;width:400px;height:270px;overflow:hidden">
+    <div class="date-inner" style="position:absolute;inset:0;background:var(--sun)">
+      <div class="date-rail" style="position:absolute;left:40px;top:40px">Automne<br>2026</div>
+    </div>
+  </div>
+
+  <div class="label" style="position:absolute;left:96px;top:88px">Polytechnique Montréal · ML510 · Projet intégrateur</div>
+
+  <h1 class="display" style="position:absolute;left:90px;top:230px;width:1000px;font-size:168px">
+    Triage <em>secondaire</em><br>des appels 911
+  </h1>
+  <p class="lede" style="position:absolute;left:96px;top:590px;width:940px">
+    Une aide à l’infirmière pour repérer, dès l’appel, les patients qui ont besoin de soins urgents. Preuve de concept.
+  </p>
+
+  <div class="footer-band" style="right:auto;width:940px;grid-template-columns:1fr 1fr;row-gap:28px;bottom:80px">
+    <div><span class="label-t">Besoin</span><p>Mieux cibler la priorité élevée parmi les appels réévalués.</p></div>
+    <div><span class="label-t">Modèle ML</span><p>Régression logistique entraînée sur NHAMCS 2019–2020.</p></div>
+    <div><span class="label-t">Modèle de fondation</span><p>Gemini extrait une fiche structurée du récit.</p></div>
+    <div><span class="label-t">Présenté par</span><p>Melissa Ouellet</p></div>
+  </div>
+  <div class="pagenum">01 / 06</div>
+  <div class="tplcredit">Template frontend-slides, Biennale Yellow · MIT License, © 2025 Zara Zhang</div>
+  <div class="credit2">Photo&nbsp;: La Presse canadienne / Christopher Katsarov, 11 mars 2026</div>
+</section>
+
+<!-- 02 · BESOIN ET PARCOURS -->
+<section data-label="Besoin et parcours" class="s">
+  <div class="panel" style="left:0;top:0;width:640px;height:1080px"></div>
+  <div class="bloom" style="width:900px;height:900px;left:1240px;top:-320px;opacity:.7"></div>
+
+  <div style="position:absolute;left:80px;top:96px;width:480px">
+    <div class="label">Le contexte · Urgences-santé</div>
+    <h2 class="headline-sm" style="margin-top:32px">337&nbsp;000 appels par an, des ambulances limitées</h2>
+    <div class="ledger prio" style="margin-top:34px">
+      <div class="lrow"><span>Appels reçus</span><span class="mono">337&nbsp;318</span></div>
+      <div class="lrow"><span>Interventions</span><span class="mono">284&nbsp;346</span></div>
+      <div class="lrow"><span>Transports</span><span class="mono">207&nbsp;024</span></div>
+      <div class="lrow"><span>P0 · réponse moyenne*</span><span class="mono">6&nbsp;min&nbsp;21&nbsp;s</span></div>
+      <div class="lrow"><span>P7 · réponse moyenne</span><span class="mono">120&nbsp;min</span></div>
+    </div>
+    <div class="label-t" style="margin-top:10px;font-size:12px">Exercice 2024-2025 · *temps réponse systémique</div>
+    <p class="body" style="margin-top:30px"><b>Sous-triage</b>&nbsp;: une urgence attend trop longtemps.</p>
+    <p class="body" style="margin-top:10px"><b>Sur-triage</b>&nbsp;: une ressource urgente part pour un appel non chronodépendant.</p>
+  </div>
+  <p class="body" style="position:absolute;left:80px;bottom:112px;width:480px"><b>Le besoin</b>&nbsp;: repérer dès l’appel les besoins chronodépendants, avec seulement ce que l’appelant dit.</p>
+  <div class="label-t" style="position:absolute;left:80px;bottom:56px;width:480px;font-size:12px;line-height:1.6">Source&nbsp;: Urgences-santé, rapport annuel de gestion 2024-2025</div>
+
+  <div style="position:absolute;left:730px;top:96px;width:1110px">
+    <div class="label">Le parcours dans l’application · un récit du jeu de test</div>
+    <h2 class="headline" style="margin-top:28px">Du récit à une <em>recommandation</em></h2>
+  </div>
+  <div class="flow" style="position:absolute;left:730px;top:330px;width:1110px">
+    <div class="step">
+      <div class="shead"><span class="num">01</span><h3>Récit</h3></div>
+      <div class="tag2">Texte libre</div>
+      <div class="sbox">
+        <p class="q">« Bonjour, je suis une préposée. Il est tombé dans l’escalier, il a mal à la hanche. C’est un résident, 89 ans. Il fait de l’angine. Il est pas diabétique. On est au CHSLD. »</p>
+      </div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step">
+      <div class="shead"><span class="num">02</span><h3>Fiche</h3></div>
+      <div class="tag2">Modèle de fondation</div>
+      <div class="sbox fiche">
+        <div><span>Motif</span><b>Chute, accident, blessure</b></div>
+        <div><span>Âge · sexe</span><b>89 · homme</b></div>
+        <div><span>Résidence</span><b>CHSLD</b></div>
+        <div><span>Antécédents</span><b>Maladie coronarienne</b></div>
+        <div><span>Citation</span><b>« Il est tombé dans l’escalier » ✓</b></div>
+      </div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step">
+      <div class="shead"><span class="num">03</span><h3>Risque</h3></div>
+      <div class="tag2">Modèle ML</div>
+      <div class="sbox">
+        <div class="numeral-s">16,5&nbsp;%</div>
+        <p class="cap">probabilité d’une issue critique</p>
+        <div class="gauge">
+          <div class="zone z1" style="width:20.8%"></div><div class="zone z2" style="width:30%"></div><div class="zone z3" style="width:49.2%"></div>
+          <div class="mark" style="left:66%"></div>
+        </div>
+        <div class="gticks"><span style="left:20.8%">5,2</span><span style="left:50.8%">12,7</span></div>
+      </div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step">
+      <div class="shead"><span class="num">04</span><h3>Décision</h3></div>
+      <div class="tag2">Infirmière</div>
+      <div class="sbox lv">
+        <div class="on">Élevée</div>
+        <div>Révision</div>
+        <div>Standard</div>
+        <p class="cap">Elle confirme ou change, justifie, et la décision est journalisée.</p>
+      </div>
+    </div>
+  </div>
+  <div class="pagenum">02 / 06</div>
+</section>
+
+<!-- 03 · DONNÉES ET MODÈLE ML -->
+<section data-label="Modèle ML" class="s">
+  <div class="bloom" style="width:1000px;height:900px;left:1100px;top:300px"></div>
+  <div class="bloom" style="width:900px;height:800px;left:-220px;top:380px;opacity:.8"></div>
+
+  <div style="position:absolute;left:96px;top:88px;width:1700px">
+    <div class="label">Préparer et modéliser · Modèle ML</div>
+    <h2 class="headline" style="margin-top:24px">Avec le type d’information disponible à l’appel, le modèle <em>classe mieux</em> que le motif seul</h2>
+  </div>
+
+  <div style="position:absolute;left:96px;top:390px;width:640px">
+    <div class="label-t">Cohorte NHAMCS · urgences É.-U., 2019–2022</div>
+    <p class="note" style="margin-top:8px">NHAMCS&nbsp;: <i>National Hospital Ambulatory Medical Care Survey</i> (CDC), enquête nationale sur les visites à l’urgence aux États-Unis.</p>
+    <div class="ledger" style="margin-top:14px">
+      <div class="lrow"><span>Visites à l’urgence</span><span class="mono">66 573</span></div>
+      <div class="lrow"><span>Arrivée en ambulance</span><span class="mono">11 699</span></div>
+      <div class="lrow"><span>Adultes</span><span class="mono">10 721</span></div>
+      <div class="lrow strong hl"><span>Sans transfert · cohorte</span><span class="mono">10 177</span></div>
+    </div>
+    <p class="body" style="margin-top:28px"><b>Issue critique</b> (≈ 10&nbsp;%)&nbsp;: décès, RCR, intubation, soins intensifs, bloc ou hémodynamie.</p>
+    <p class="body" style="margin-top:14px"><b>Découpage temporel</b>&nbsp;: entraînement 2019–2020, validation 2021, test 2022 évalué une seule fois.</p>
+    <p class="body" style="margin-top:14px"><b>Entrées</b>&nbsp;: âge, sexe, résidence, heure, antécédents, motif. Aucun signe vital.</p>
+  </div>
+
+  <div style="position:absolute;left:880px;top:390px;width:940px">
+    <div class="label-t">Aire sous la courbe ROC · test 2022 (n = 2 490)</div>
+    <div class="chart" style="margin-top:22px">
+      <div class="crow"><span>Règle par motif (MPDS)</span><div class="track"><div class="bar" style="width:calc((0.588 - 0.5) / 0.25 * 100%)"></div></div><span class="mono">0,59</span></div>
+      <div class="crow"><span>Motif seul</span><div class="track"><div class="bar" style="width:calc((0.624 - 0.5) / 0.25 * 100%)"></div></div><span class="mono">0,62</span></div>
+      <div class="crow"><span>Boosting</span><div class="track"><div class="bar" style="width:calc((0.673 - 0.5) / 0.25 * 100%)"></div></div><span class="mono">0,67</span></div>
+      <div class="crow lit"><span>Régression logistique</span><div class="track"><div class="bar" style="width:calc((0.685 - 0.5) / 0.25 * 100%)"></div></div><span class="mono">0,68</span></div>
+      <div class="crow ref"><span>Repère&nbsp;: ESI à l’urgence*</span><div class="track"><div class="bar" style="width:calc((0.731 - 0.5) / 0.25 * 100%)"></div></div><span class="mono">0,73</span></div>
+      <div class="axis"><span></span><div class="ticks"><span>0,50</span><span>0,55</span><span>0,60</span><span>0,65</span><span>0,70</span><span>0,75</span></div><span></span></div>
+    </div>
+    <p class="body" style="margin-top:30px">Gain sur le motif seul&nbsp;: +0,06 (IC 95&nbsp;%&nbsp;: +0,03&nbsp;à&nbsp;+0,09, bootstrap apparié). Le modèle plus simple et régularisé bat le boosting.</p>
+    <p class="note" style="margin-top:12px">* Fait par une infirmière à l’arrivée, avec les signes vitaux (n = 1 686). Ce n’est pas un concurrent, seulement un ordre de grandeur.</p>
+  </div>
+  <div class="pagenum">03 / 06</div>
+</section>
+
+<!-- 04 · INTERPRÉTATION : TROIS NIVEAUX -->
+<section data-label="Trois niveaux" class="s">
+  <div class="bloom" style="width:1100px;height:1000px;left:-300px;top:260px"></div>
+  <div class="ember" style="width:520px;height:520px;left:1560px;top:-200px"></div>
+
+  <div style="position:absolute;left:96px;top:88px;width:1700px">
+    <div class="label">Interpréter · Résultats sur le test 2022</div>
+    <h2 class="headline" style="margin-top:24px">Trois niveaux plutôt qu’un seul seuil&nbsp;: le risque <em>trie</em> les appels</h2>
+  </div>
+
+  <div class="levels" style="position:absolute;left:96px;top:380px;width:1040px">
+    <div class="level">
+      <div class="label-t">Élevée</div>
+      <div class="numeral">18,6&nbsp;%</div>
+      <p class="body">de cas critiques</p>
+      <div class="vbar"><div style="height:calc(18.57% / 20 * 100)"></div></div>
+      <p class="mono small">24&nbsp;% des appels · 112 cas</p>
+    </div>
+    <div class="level">
+      <div class="label-t">Révision</div>
+      <div class="numeral">9,3&nbsp;%</div>
+      <p class="body">de cas critiques</p>
+      <div class="vbar"><div style="height:calc(9.31% / 20 * 100)"></div></div>
+      <p class="mono small">46&nbsp;% des appels · 106 cas</p>
+    </div>
+    <div class="level">
+      <div class="label-t">Standard</div>
+      <div class="numeral">4,3&nbsp;%</div>
+      <p class="body">de cas critiques</p>
+      <div class="vbar"><div style="height:calc(4.27% / 20 * 100)"></div></div>
+      <p class="mono small">30&nbsp;% des appels · 32 cas</p>
+    </div>
+  </div>
+
+  <div style="position:absolute;left:1230px;top:380px;width:600px">
+    <div class="strands tight">
+      <div class="strand"><span class="num">a</span><div><h3>Face à la règle actuelle</h3><p>Au seuil figé en validation&nbsp;: sensibilité 44,8&nbsp;% contre 41,2&nbsp;%, avec 5&nbsp;% moins d’alertes. Écart non significatif (IC&nbsp;: −2,6&nbsp;à&nbsp;+10,3 points).</p></div></div>
+      <div class="strand"><span class="num">b</span><div><h3>Calibration</h3><p>Les risques prédits suivent les taux observés&nbsp;: 3&nbsp;%&nbsp;→ 4&nbsp;% dans le quintile le plus bas, 24&nbsp;%&nbsp;→ 20&nbsp;% dans le plus haut.</p></div></div>
+      <div class="strand"><span class="num">c</span><div><h3>Ce qui reste</h3><p>32 des 250 cas critiques tombent en standard. La recommandation aide&nbsp;; elle ne remplace pas le jugement de l’infirmière.</p></div></div>
+    </div>
+  </div>
+  <div class="pagenum">04 / 06</div>
+</section>
+
+<!-- 05 · MODÈLE DE FONDATION -->
+<section data-label="Modèle de fondation" class="s">
+  <div class="panel" style="left:1280px;top:0;width:640px;height:1080px"></div>
+  <div class="bloom" style="width:900px;height:800px;left:-260px;top:-260px;opacity:.75"></div>
+
+  <div style="position:absolute;left:96px;top:88px;width:1100px">
+    <div class="label">Adapter · Modèle de fondation</div>
+    <h2 class="headline" style="margin-top:24px">Gemini remplit la fiche, <em>le code vérifie</em></h2>
+  </div>
+
+  <div style="position:absolute;left:96px;top:300px;width:1080px">
+    <div class="label-t">Fiche entièrement exacte · récits synthétiques de test (n = 40)</div>
+    <div class="chart" style="margin-top:22px">
+      <div class="crow lit"><span>Gemini + garde-fous</span><div class="track"><div class="bar" style="width:100%"></div></div><span class="mono">100&nbsp;%</span></div>
+      <div class="crow"><span>Référence par mots-clés</span><div class="track"><div class="bar" style="width:52.5%"></div></div><span class="mono">52,5&nbsp;%</span></div>
+    </div>
+    <div class="label-t" style="margin-top:56px">Motif exact · 19 extraits d’appels réels publiés (SAMU, France)</div>
+    <div class="chart" style="margin-top:22px">
+      <div class="crow lit"><span>Gemini + garde-fous</span><div class="track"><div class="bar" style="width:84.2%"></div></div><span class="mono">84&nbsp;%</span></div>
+      <div class="crow"><span>Référence par mots-clés</span><div class="track"><div class="bar" style="width:31.6%"></div></div><span class="mono">32&nbsp;%</span></div>
+    </div>
+    <p class="body" style="margin-top:28px">Chaîne complète&nbsp;: 18 des 19 appels réels classés élevée ou révision. Prompt figé avant le test.</p>
+    <div class="label-t hl-label" style="margin-top:34px">Limites</div>
+    <ul class="lims">
+      <li>Le 100&nbsp;% vient de récits bâtis sur nos propres gabarits&nbsp;: c’est optimiste.</li>
+      <li>Validation réelle sur 19 extraits seulement, venant de France et non du Québec.</li>
+      <li>Seul le motif est appuyé par une citation&nbsp;: un antécédent inventé ne serait pas détecté.</li>
+      <li>Aucune donnée réelle envoyée à l’API&nbsp;; en production, LLM hébergé de façon conforme (diapo 6).</li>
+    </ul>
+  </div>
+
+  <div style="position:absolute;left:1360px;top:96px;width:480px">
+    <div class="label">Comment il est adapté</div>
+    <div class="strands tight" style="margin-top:32px">
+      <div class="strand"><span class="num">01</span><div><h3>Instructions</h3><p>Rôle, tâche et règles. Aucun diagnostic, aucune décision de priorité.</p></div></div>
+      <div class="strand"><span class="num">02</span><div><h3>Sortie imposée</h3><p>Schéma Pydantic&nbsp;: seules les valeurs permises au modèle ML.</p></div></div>
+      <div class="strand"><span class="num">03</span><div><h3>Trois exemples</h3><p>Dont un récit qui tente de manipuler la priorité.</p></div></div>
+      <div class="strand"><span class="num">04</span><div><h3>Vérification par code</h3><p>Citation présente mot pour mot, âge plausible, instruction suspecte signalée. 4 injections sur 4 détectées.</p></div></div>
+    </div>
+  </div>
+  <div class="pagenum">05 / 06</div>
+</section>
+
+<!-- 06 · CONCLUSION -->
+<section data-label="Conclusion" class="s s-close">
+  <div class="bloom" style="width:1300px;height:900px;left:900px;top:520px"></div>
+  <div class="ember" style="width:560px;height:560px;left:1580px;top:-220px"></div>
+
+  <div style="position:absolute;left:96px;top:88px;width:1100px">
+    <div class="label">Conclusion · Limites et déploiement</div>
+    <h2 class="display-md" style="margin-top:28px">L’outil recommande.<br><em>L’infirmière décide.</em></h2>
+  </div>
+  <p class="lede" style="position:absolute;left:1240px;top:170px;width:590px">Un parcours complet qui fonctionne&nbsp;: le LLM structure le récit, le modèle ML classe mieux que le motif seul, et la décision reste humaine.</p>
+
+  <div style="position:absolute;left:96px;top:470px;width:960px">
+    <div class="label-t">Sensibilité par sous-groupe&nbsp;: le modèle aide surtout les 65 ans et +</div>
+    <div class="legend"><span><i class="bm"></i>Modèle</span><span><i class="br"></i>Règle actuelle</span></div>
+    <div class="groups">
+      <div class="grow"><span>18–64 ans</span><div class="pair"><div class="bm" style="width:24.1%"></div><div class="br" style="width:41.7%"></div></div><span class="mono">24&nbsp;% · 42&nbsp;%</span></div>
+      <div class="grow"><span>65–79 ans</span><div class="pair"><div class="bm" style="width:58.3%"></div><div class="br" style="width:42.9%"></div></div><span class="mono">58&nbsp;% · 43&nbsp;%</span></div>
+      <div class="grow"><span>80 ans et +</span><div class="pair"><div class="bm" style="width:63.8%"></div><div class="br" style="width:37.9%"></div></div><span class="mono">64&nbsp;% · 38&nbsp;%</span></div>
+      <div class="grow"><span>Femmes</span><div class="pair"><div class="bm" style="width:37.4%"></div><div class="br" style="width:36.6%"></div></div><span class="mono">37&nbsp;% · 37&nbsp;%</span></div>
+      <div class="grow"><span>Hommes</span><div class="pair"><div class="bm" style="width:52.9%"></div><div class="br" style="width:46.2%"></div></div><span class="mono">53&nbsp;% · 46&nbsp;%</span></div>
+      <div class="grow"><span>Douleur thoracique*</span><div class="pair"><div class="bm" style="width:36.4%"></div><div class="br" style="width:100.0%"></div></div><span class="mono">36&nbsp;% · 100&nbsp;%</span></div>
+    </div>
+    <p class="note2" style="margin-top:16px">* La règle signale tous les appels pour douleur thoracique&nbsp;: 100&nbsp;% par construction (22 cas critiques seulement).</p>
+    <p class="note2" style="margin-top:8px">Dans NHAMCS, les antécédents viennent du dossier de l’urgence&nbsp;; dans l’application, de l’appelant. Données américaines, pas québécoises.</p>
+  </div>
+
+  <div style="position:absolute;left:1180px;top:470px;width:650px">
+    <div class="label-t">Pour déployer</div>
+    <div class="timeline">
+      <div class="tstep"><i></i><h3>Aujourd’hui · preuve de concept</h3><p>Données publiques et récits synthétiques.</p></div>
+      <div class="tstep"><i></i><h3>Mode silencieux</h3><p>Sur des appels d’Urgences-santé, sans influencer la décision.</p></div>
+      <div class="tstep"><i></i><h3>Recalibrer</h3><p>Sur les données locales, en gardant la règle actuelle comme plancher.</p></div>
+      <div class="tstep"><i></i><h3>Évaluation prospective</h3><p>LLM hébergé conformément à la Loi 25, suivi de la dérive et des sous-groupes.</p></div>
+    </div>
+  </div>
+  <div class="pagenum">06 / 06</div>
+</section>

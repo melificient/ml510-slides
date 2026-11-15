@@ -1,0 +1,4 @@
+.slide-*.png
+slides.pdf
+__pycache__/
+.DS_Store
