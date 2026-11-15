@@ -194,3 +194,10 @@ deck-stage > section{background:var(--paper);color:var(--ink);overflow:hidden;fo
 .credit2{opacity:.85}
 .credit2,.s-cover .pagenum{color:var(--ink);opacity:.75}
 .tplcredit{position:absolute;top:36px;right:44px;font-family:var(--mono);font-size:15px;letter-spacing:.04em;color:var(--ink);opacity:.75}
+
+/* ---- slide 7: demo video ---- */
+.video-frame{border:1px solid var(--ink);background:var(--ink)}
+.video-frame video{display:block;width:100%;height:100%;object-fit:contain;background:var(--ink)}
+.video-missing{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:var(--paper-deep);font-size:26px}
+.video-frame.missing video{display:none}
+.video-frame.missing .video-missing{display:flex}

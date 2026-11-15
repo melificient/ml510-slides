@@ -29,3 +29,29 @@
     s.classList.remove('play'); void s.offsetWidth; s.classList.add('play');
   });
 })();
+
+// ---- demo video (last slide): play on arrival, pause on leave, Space toggles ----
+(() => {
+  const deck = document.querySelector('deck-stage');
+  const video = document.querySelector('.demo-video');
+  if (!deck || !video) return;
+  const frame = video.closest('.video-frame');
+  video.addEventListener('error', () => frame.classList.add('missing'));
+  const demoSlide = video.closest('section');
+  deck.addEventListener('slidechange', e => {
+    if (e.detail.slide === demoSlide) {
+      if (!document.documentElement.classList.contains('static')) {
+        const p = video.play(); if (p) p.catch(() => {});
+      }
+    } else if (!video.paused) {
+      video.pause();
+    }
+  });
+  window.addEventListener('keydown', e => {
+    if ((e.key === ' ' || e.key === 'k' || e.key === 'K') && deck._slides &&
+        deck._slides[deck._index] === demoSlide) {
+      e.preventDefault(); e.stopImmediatePropagation();
+      video.paused ? video.play().catch(() => {}) : video.pause();
+    }
+  }, true);
+})();

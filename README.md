@@ -4,6 +4,7 @@ Six-slide presentation for the ML510 integrative project (Polytechnique Montréa
 
 **View the slides:** https://melificient.github.io/ml510-slides/
 Use ← / → (or space) to navigate and F11 for full screen. On slide 2, → reveals the four steps one at a time.
+The last slide (« Démo », after the conclusion) plays `assets/demo.mp4`: it starts on arrival, Space or K pauses/resumes.
 
 ## How it's built
 
@@ -14,13 +15,15 @@ The deck is plain HTML/CSS/JS. `build.py` assembles everything into a single sel
 src/slides.html     content of the 6 slides (French)
 src/style.css       Biennale Yellow styling, layout, charts, animations
 src/anim.js         step-by-step reveal on slide 2, bars growing in, ambulance slide-in
-assets/             ambulance photo, fonts (woff2, latin subset)
+assets/             ambulance photo, fonts (woff2, latin subset), demo.mp4 (not inlined)
 vendor/             deck-stage.js — 1920×1080 stage that scales to any screen
 build.py            builds index.html (standard library only)
 export_pdf.py       optional: exports slides.pdf with animations off
 ```
 
-To change a slide: edit `src/`, run `python build.py`, commit `index.html` together with the sources.
+To change a slide: edit a file in `src/` (on github.com or locally) and push. The GitHub Actions workflow
+(`.github/workflows/build.yml`) runs `build.py` and publishes the result to GitHub Pages.
+Pages must be set to **Settings → Pages → Source: GitHub Actions**. Don't edit `index.html` by hand.
 
 ## Data sources
 
