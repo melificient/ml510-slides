@@ -201,3 +201,148 @@ deck-stage > section{background:var(--paper);color:var(--ink);overflow:hidden;fo
 .video-missing{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:var(--paper-deep);font-size:26px}
 .video-frame.missing video{display:none}
 .video-frame.missing .video-missing{display:flex}
+
+/* ---- slide 2: process timeline ---- */
+.proc .trk{fill:none;stroke:var(--ink);stroke-width:5;stroke-linecap:round}
+.proc .nd{fill:var(--paper);stroke:var(--ink);stroke-width:3}
+.proc .nd.on{fill:var(--sun)}
+.proc .nl{font-family:var(--serif);font-size:34px;fill:var(--ink)}
+.proc .ns{font-family:var(--sans);font-size:21px;fill:var(--ink)}
+.proc .tg{font-family:var(--sans);font-weight:600;font-size:16px;letter-spacing:.18em;text-transform:uppercase;fill:var(--ink)}
+.proc .tool{fill:var(--sun);stroke:var(--ink);stroke-width:1.5}
+.proc .lead{stroke:var(--ink);stroke-width:1.5}
+.proc .toolbox{fill:var(--sun)}
+.proc .tb{font-family:var(--serif);font-size:32px;fill:var(--ink)}
+.proc .tbs{font-family:var(--sans);font-size:22px;fill:var(--ink)}
+.proc [data-step]{transition:opacity .45s ease}
+.proc .hidden-step{transform:none}
+.legend-p .prow{display:grid;grid-template-columns:54px 1fr 140px;align-items:baseline;font-size:21px;padding:5px 0}
+.legend-p .prow .mono{font-size:19px}
+.legend-p .prow i{font-style:normal;font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-align:right}
+.legend-p .label-t{margin-bottom:10px}
+.legend-p .prow{grid-template-columns:50px 1fr 130px 70px}
+.legend-p .prow b{font-weight:400;text-align:right;font-size:19px}
+.legend-p .prow.head{padding-bottom:8px}
+.legend-p .prow.head .label-t{margin:0}
+.legend-p .prow.head i,.legend-p .prow.head b{font-family:var(--sans);font-style:normal;font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;text-align:right}
+.legend-p .lnote{font-size:16px;line-height:1.4;margin-top:10px}
+.legend-p .prow{grid-template-columns:44px 1fr 132px 58px;font-size:19px;padding:4px 0}
+.legend-p .prow i{font-size:13px;white-space:nowrap}
+.legend-p .prow .mono,.legend-p .prow b{font-size:18px}
+.legend-p .lnote{font-size:15px}
+.legend-p .prow{column-gap:14px}
+
+/* ---- slide 3: split visual + model chart ---- */
+.splits{display:flex;gap:0;align-items:flex-end}
+.split{padding-right:18px;box-sizing:border-box}
+.split:last-child{padding-right:0}
+.syr{font-family:var(--serif);font-size:40px;line-height:1;margin-top:8px}
+.sbar{position:relative;height:300px;margin-top:16px;background:var(--paper-deep);border:1px solid var(--ink);display:flex;flex-direction:column;justify-content:flex-end}
+.scrit{background:var(--sun);border-top:1px solid var(--ink)}
+.sn{position:absolute;top:14px;left:14px;font-size:24px}
+.spct{font-size:21px;margin-top:12px}
+.srole{font-size:19px;line-height:1.35;margin-top:4px;opacity:.85}
+.sw{display:inline-block;width:18px;height:18px;background:var(--sun);border:1px solid var(--ink);vertical-align:-3px;margin-right:10px}
+.crow2{display:grid;grid-template-columns:330px 1fr 70px;gap:18px;align-items:center;padding:9px 0}
+.crow2 .mname b{display:block;font-weight:400;font-size:24px}
+.crow2.lit .mname b{font-weight:600}
+.crow2 .mname small{display:block;font-size:16px;line-height:1.3;opacity:.8;margin-top:2px}
+.crow2 .mono{text-align:right;font-size:24px}
+.crow2.lit .bar{background:var(--sun);border:1px solid var(--ink)}
+.crow2.ref .bar{background:repeating-linear-gradient(-45deg,rgba(27,37,102,.35) 0 2px,transparent 2px 9px);border:1px solid var(--ink)}
+.axis2{display:grid;grid-template-columns:330px 1fr 70px;gap:18px;margin-top:6px}
+.play .crow2 .bar{transform-origin:left center;animation:grow .7s cubic-bezier(.2,.7,.2,1) both}
+.play .crow2:nth-child(2) .bar{animation-delay:.08s}.play .crow2:nth-child(3) .bar{animation-delay:.16s}
+.play .crow2:nth-child(4) .bar{animation-delay:.24s}.play .crow2:nth-child(5) .bar{animation-delay:.32s}
+.splits{align-items:flex-start}
+.sbar{height:320px}
+.scrit{min-height:0}
+.split .label-t{white-space:nowrap}
+.note b{font-weight:600}.note2s{font-size:16px;line-height:1.4}.note2s b{font-weight:600}
+
+/* ---- slide 3: information ladder ---- */
+.ladder{margin-top:14px}
+.phase{font-weight:600;font-size:14px;letter-spacing:.16em;text-transform:uppercase;padding:6px 0 4px;border-bottom:1px solid var(--ink)}
+.phase.late{margin-top:16px}
+.rung{display:grid;grid-template-columns:300px 200px 1fr 56px;gap:14px;align-items:center;padding:10px 0}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:15px;line-height:1.25;padding:4px 9px;border:1px solid var(--ink);background:var(--paper)}
+.chip.on{background:var(--sun)}
+.chip.dash{border-style:dashed}
+.meth b{display:block;font-weight:400;font-size:22px;line-height:1.1}
+.rung.lit .meth b{font-weight:600}
+.meth small{display:block;font-size:14px;line-height:1.3;opacity:.8;margin-top:3px}
+.mini{height:22px}
+.mini div{height:100%;background:var(--ink)}
+.rung.lit .mini div{background:var(--sun);border:1px solid var(--ink)}
+.rung.ref .mini div{background:repeating-linear-gradient(-45deg,rgba(27,37,102,.35) 0 2px,transparent 2px 9px);border:1px solid var(--ink)}
+.auc{font-size:22px;text-align:right}
+.step-arrow{font-size:15px;padding-left:4px;opacity:.75}
+.play .mini div{transform-origin:left center;animation:grow .7s cubic-bezier(.2,.7,.2,1) both}
+.rung{grid-template-columns:250px 230px 1fr 56px;padding:8px 0}
+.chip{font-size:16px}
+.meth b{font-size:24px}
+.meth small{font-size:15px}
+.step-arrow{font-size:16px}
+.sbar{height:250px}
+.sbar{height:300px}
+.legend-p .prow.hl{background:var(--sun);margin:2px -10px 0;padding:4px 10px}
+.phase.late{margin-top:48px}
+
+/* ---- slide 4: three risk levels ---- */
+.lvaxis{display:flex;justify-content:space-between;font-weight:600;font-size:14px;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:6px;margin-bottom:22px}
+.lvcol{padding-right:18px;box-sizing:border-box}
+.lvcol:last-child{padding-right:0}
+.lvrange{font-family:var(--serif);font-size:34px;line-height:1;margin-top:8px}
+.lvbar{height:300px}
+.lvcol.top .sbar{border-width:2px}
+.lvcol .sn{font-size:20px}
+.thr{display:grid;grid-template-columns:150px 1fr;gap:18px;align-items:baseline;margin-top:24px}
+.thv{font-size:34px}
+.thr p{font-size:22px;line-height:1.4}
+.thnote{font-size:20px;line-height:1.4;margin-top:30px;padding:12px 16px;background:var(--sun)}
+.scc{font-size:18px;margin-top:2px}
+
+/* ---- slide 4: drift mini chart ---- */
+.drift{margin-top:10px}
+.dleg{display:flex;gap:18px;font-size:15px;margin-bottom:6px}
+.dleg i{display:inline-block;width:16px;height:10px;margin-right:6px;vertical-align:1px}
+.drow{display:grid;grid-template-columns:96px 1fr;align-items:center;padding:4px 0}
+.dname{font-size:17px}
+.dr{display:flex;align-items:center;gap:8px;height:13px;margin:2px 0}
+.dr i{display:block;height:100%}
+.dr .mono{font-size:13px}
+.y0{background:rgba(27,37,102,.35)}
+.y1{background:rgba(27,37,102,.65)}
+.y2{background:var(--sun);border:1px solid var(--ink);box-sizing:border-box}
+.play .dr i{transform-origin:left center;animation:grow .7s cubic-bezier(.2,.7,.2,1) both}
+
+/* ---- slide 4 v3: stacked graphs + level explanations ---- */
+.g4,.g4.test{padding:10px 0 12px}
+.g4+.g4,.g4+.g4.test{margin-top:14px}
+.g4.test{background:rgba(241,238,46,.28);margin-left:-14px;margin-right:-14px;padding-left:14px;padding-right:14px}
+.g4h{display:flex;align-items:baseline;gap:16px;margin-bottom:6px}
+.g4y{font-family:var(--serif);font-size:30px;line-height:1}
+.g4c{font-family:var(--mono);font-size:16px;opacity:.75}
+.g4r{display:grid;grid-template-columns:120px 1fr 84px 150px;gap:14px;align-items:center;padding:3px 0}
+.g4n{font-size:19px}
+.g4t{height:22px}
+.g4t i{display:block;height:100%}
+.g4t i.l0{background:var(--sun);border:1px solid var(--ink);box-sizing:border-box}
+.g4t i.l1{background:rgba(27,37,102,.75)}
+.g4t i.l2{background:rgba(27,37,102,.35)}
+.g4v{font-size:19px;text-align:right}
+.g4s{font-size:15px;opacity:.75}
+.g4axis{display:grid;grid-template-columns:120px 1fr 84px 150px;gap:14px;margin-top:8px}
+.play .g4t i{transform-origin:left center;animation:grow .7s cubic-bezier(.2,.7,.2,1) both}
+.lvx{padding:14px 0 14px 18px;border-left:6px solid var(--ink);margin-bottom:18px}
+.lvx.l0x{border-left-color:var(--sun)}
+.lvx.l1x{border-left-color:rgba(27,37,102,.75)}
+.lvx.l2x{border-left-color:rgba(27,37,102,.35)}
+.lvh{display:flex;justify-content:space-between;align-items:baseline}
+.lvh b{font-family:var(--serif);font-weight:400;font-size:36px;line-height:1}
+.lvh .mono{font-size:18px}
+.lvx p{font-size:21px;line-height:1.4;margin-top:8px}
+.lvx p b{font-weight:600}
+.g4r{padding:5px 0}.g4t{height:26px}.g4n,.g4v{font-size:21px}
+.g4+.g4,.g4+.g4.test{margin-top:22px}
