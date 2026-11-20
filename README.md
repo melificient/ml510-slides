@@ -3,6 +3,7 @@
 Six-slide presentation for the ML510 integrative project (Polytechnique Montréal, fall 2026).
 
 **View the slides:** https://melificient.github.io/ml510-slides/
+**PDF:** https://melificient.github.io/ml510-slides/slides.pdf (rebuilt automatically on every push)
 Use ← / → (or space) to navigate and F11 for full screen. On slide 2, → reveals the four steps one at a time.
 The last slide (« Démo », after the conclusion) plays `assets/demo.mp4`: it starts on arrival, Space or K pauses/resumes.
 

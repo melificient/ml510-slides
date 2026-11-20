@@ -1,4 +1,4 @@
-"""Export the deck to slides.pdf (one page per slide, animations off).
+"""Export the deck to slides.pdf (one page per slide, animations off, demo video slide skipped).
 
 Usage:  pip install playwright pillow && playwright install chromium
         python build.py && python export_pdf.py
@@ -21,7 +21,11 @@ async def main() -> None:
         await page.evaluate("document.documentElement.classList.add('static')")
         await page.wait_for_timeout(800)
         n = await page.evaluate("document.querySelectorAll('deck-stage > section').length")
+        demo = await page.evaluate("[...document.querySelectorAll('deck-stage > section')]"
+                                   ".map((s, i) => s.classList.contains('s-demo') ? i : -1).filter(i => i >= 0)")
         for i in range(n):
+            if i in demo:
+                continue
             await page.evaluate(f"document.querySelector('deck-stage')._go({i}, 'api')")
             await page.wait_for_timeout(400)
             # hide the deck's on-screen navigation bar
@@ -35,7 +39,7 @@ async def main() -> None:
     images[0].save(ROOT / "slides.pdf", save_all=True, append_images=images[1:], resolution=144)
     for s in shots:
         s.unlink()
-    print(f"slides.pdf written ({n} pages)")
+    print(f"slides.pdf written ({len(images)} pages)")
 
 
 if __name__ == "__main__":

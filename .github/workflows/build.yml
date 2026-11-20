@@ -3,7 +3,7 @@ name: Build slides
 on:
   push:
     branches: [main]
-    paths: ['src/**', 'assets/**', 'vendor/**', 'build.py', '.github/workflows/build.yml']
+    paths: ['src/**', 'assets/**', 'vendor/**', 'build.py', 'export_pdf.py', '.github/workflows/build.yml']
   workflow_dispatch:
 
 permissions:
@@ -28,6 +28,11 @@ jobs:
           python-version: '3.12'
       - name: Build index.html
         run: python build.py
+      - name: Export slides.pdf
+        run: |
+          pip install playwright pillow
+          python -m playwright install --with-deps chromium
+          python export_pdf.py
       - name: Keep index.html in the repo up to date
         run: |
           git config user.name "github-actions[bot]"
@@ -37,8 +42,12 @@ jobs:
       - name: Prepare site
         run: |
           mkdir -p _site/assets
-          cp index.html _site/
+          cp index.html slides.pdf _site/
           if [ -f assets/demo.mp4 ]; then cp assets/demo.mp4 _site/assets/; fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: slides-pdf
+          path: slides.pdf
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
