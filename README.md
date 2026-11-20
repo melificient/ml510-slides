@@ -1,4 +1,4 @@
-# ML510 · Triage secondaire des appels 911 — slides
+# ML510 · Triage secondaire des appels 911 
 
 Six-slide presentation for the ML510 integrative project (Polytechnique Montréal, fall 2026).
 
