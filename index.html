@@ -356,6 +356,7 @@ deck-stage > section{background:var(--paper);color:var(--ink);overflow:hidden;fo
 .lvx p b{font-weight:600}
 .g4r{padding:5px 0}.g4t{height:26px}.g4n,.g4v{font-size:21px}
 .g4+.g4,.g4+.g4.test{margin-top:22px}
+.proc .hlbox{fill:var(--sun)}
 </style>
 </head><body>
 <deck-stage width="1920" height="1080">
@@ -418,7 +419,7 @@ deck-stage > section{background:var(--paper);color:var(--ink);overflow:hidden;fo
     <text class="nl" x="960" y="656" text-anchor="middle"><tspan x="960" dy="0">File d’attente</tspan></text><text class="nl" x="1300" y="656" text-anchor="middle"><tspan x="1300" dy="0">Rappel infirmier</tspan></text><text class="nl" x="1620" y="617" text-anchor="middle"><tspan x="1620" dy="0">Ambulance</tspan><tspan x="1620" dy="1.15em">ou réorientation</tspan></text>
     <text class="tg" x="820" y="590" text-anchor="start"><tspan x="820" dy="0">Non urgent</tspan></text>
     <text class="ns" x="1300" y="756" text-anchor="middle"><tspan x="1300" dy="0">Triage secondaire</tspan><tspan x="1300" dy="1.15em">Questionnaire structuré</tspan></text>
-    <text class="ns" x="1620" y="790" text-anchor="middle"><tspan x="1620" dy="0">P7&#160;: 120&#160;min en moyenne</tspan></text>
+    <rect class="hlbox" x="1494" y="764" width="252" height="36"/><text class="ns" x="1620" y="790" text-anchor="middle"><tspan x="1620" dy="0">P7&#160;: 120&#160;min en moyenne</tspan></text>
   </g>
   <g data-step="4">
     <rect class="tool" x="975" y="691" width="310" height="18"/>
@@ -508,7 +509,8 @@ deck-stage > section{background:var(--paper);color:var(--ink);overflow:hidden;fo
       </div>
     </div>
     <p class="note2s" style="margin-top:40px"><b>Nature du cas</b>&nbsp;: 16 catégories regroupant les codes <i>Reason for Visit</i> (RFV1) de NHAMCS.</p>
-    <p class="note2s" style="margin-top:6px">† MPDS&nbsp;: <i>Medical Priority Dispatch System</i> · * ESI&nbsp;: <i>Emergency Severity Index</i></p>
+    <p class="note2s" style="margin-top:6px">† MPDS&nbsp;: <i>Medical Priority Dispatch System</i> · au téléphone · 5 priorités, de P0 (plus urgent) à P7 (moins urgent)</p>
+    <p class="note2s" style="margin-top:4px">* ESI&nbsp;: <i>Emergency Severity Index</i> · à l’urgence · 5 niveaux, de 1 (plus urgent) à 5 (moins urgent)</p>
   </div>
   <div class="pagenum">03 / 06</div>
 </section>
@@ -570,7 +572,7 @@ deck-stage > section{background:var(--paper);color:var(--ink);overflow:hidden;fo
       <div class="crow lit"><span>Gemini + guardrails</span><div class="track"><div class="bar" style="width:100%"></div></div><span class="mono">100&nbsp;%</span></div>
       <div class="crow"><span>Référence par mots-clés</span><div class="track"><div class="bar" style="width:52.5%"></div></div><span class="mono">52,5&nbsp;%</span></div>
     </div>
-    <div class="label-t" style="margin-top:56px">Motif exact · 19 extraits d’appels réels publiés (SAMU, France)</div>
+    <div class="label-t" style="margin-top:56px">Nature du cas exacte · 19 extraits d’appels réels publiés (SAMU, France)</div>
     <div class="chart" style="margin-top:22px">
       <div class="crow lit"><span>Gemini + guardrails</span><div class="track"><div class="bar" style="width:84.2%"></div></div><span class="mono">84&nbsp;%</span></div>
       <div class="crow"><span>Référence par mots-clés</span><div class="track"><div class="bar" style="width:31.6%"></div></div><span class="mono">32&nbsp;%</span></div>
@@ -578,9 +580,9 @@ deck-stage > section{background:var(--paper);color:var(--ink);overflow:hidden;fo
     <p class="body" style="margin-top:28px">Chaîne complète&nbsp;: 18 des 19 appels réels classés élevée ou révision. Prompt figé avant le test.</p>
     <div class="label-t hl-label" style="margin-top:34px">Limites</div>
     <ul class="lims">
-      <li>Le 100&nbsp;% vient de récits bâtis sur nos propres gabarits&nbsp;: c’est optimiste.</li>
+      <li>Le 100&nbsp;% vient de récits bâtis sur nos propres templates&nbsp;: c’est optimiste.</li>
       <li>Validation réelle sur 19 extraits seulement, venant de France et non du Québec.</li>
-      <li>Seul le motif est appuyé par une citation&nbsp;: un antécédent inventé ne serait pas détecté.</li>
+      <li>Seule la nature du cas est appuyée par une citation&nbsp;: un antécédent inventé ne serait pas détecté.</li>
       <li>Aucune donnée réelle envoyée à l’API&nbsp;; en production, LLM hébergé de façon conforme (diapo 6).</li>
     </ul>
   </div>

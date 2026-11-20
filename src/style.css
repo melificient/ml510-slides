@@ -346,3 +346,4 @@ deck-stage > section{background:var(--paper);color:var(--ink);overflow:hidden;fo
 .lvx p b{font-weight:600}
 .g4r{padding:5px 0}.g4t{height:26px}.g4n,.g4v{font-size:21px}
 .g4+.g4,.g4+.g4.test{margin-top:22px}
+.proc .hlbox{fill:var(--sun)}
