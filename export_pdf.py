@@ -1,4 +1,4 @@
-"""Export the deck to slides.pdf (one page per slide, animations off, demo video slide skipped).
+"""Export the deck to slides.pdf (one page per slide, animations off; the demo slide shows a still frame).
 
 Usage:  pip install playwright pillow && playwright install chromium
         python build.py && python export_pdf.py
@@ -21,11 +21,19 @@ async def main() -> None:
         await page.evaluate("document.documentElement.classList.add('static')")
         await page.wait_for_timeout(800)
         n = await page.evaluate("document.querySelectorAll('deck-stage > section').length")
-        demo = await page.evaluate("[...document.querySelectorAll('deck-stage > section')]"
-                                   ".map((s, i) => s.classList.contains('s-demo') ? i : -1).filter(i => i >= 0)")
+        # On the demo slide, swap the video for its still frame (a PDF cannot play video).
+        if (ROOT / "assets" / "demo-poster.jpg").exists():
+            await page.evaluate("""() => {
+                const v = document.querySelector('.demo-video');
+                if (!v) return;
+                const img = document.createElement('img');
+                img.src = 'assets/demo-poster.jpg';
+                img.style.cssText = 'display:block;width:100%;height:100%;object-fit:contain';
+                v.closest('.video-frame').classList.remove('missing');
+                v.replaceWith(img);
+            }""")
+            await page.wait_for_timeout(400)
         for i in range(n):
-            if i in demo:
-                continue
             await page.evaluate(f"document.querySelector('deck-stage')._go({i}, 'api')")
             await page.wait_for_timeout(400)
             # hide the deck's on-screen navigation bar

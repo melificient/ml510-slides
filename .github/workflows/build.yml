@@ -28,6 +28,12 @@ jobs:
           python-version: '3.12'
       - name: Build index.html
         run: python build.py
+      - name: Still frame of the demo video
+        run: |
+          if [ -f assets/demo.mp4 ]; then
+            command -v ffmpeg || (sudo apt-get update && sudo apt-get install -y ffmpeg)
+            ffmpeg -loglevel error -y -ss 20 -i assets/demo.mp4 -frames:v 1 -q:v 3 assets/demo-poster.jpg
+          fi
       - name: Export slides.pdf
         run: |
           pip install playwright pillow
@@ -44,6 +50,7 @@ jobs:
           mkdir -p _site/assets
           cp index.html slides.pdf _site/
           if [ -f assets/demo.mp4 ]; then cp assets/demo.mp4 _site/assets/; fi
+          if [ -f assets/demo-poster.jpg ]; then cp assets/demo-poster.jpg _site/assets/; fi
       - uses: actions/upload-artifact@v4
         with:
           name: slides-pdf

@@ -347,3 +347,5 @@ deck-stage > section{background:var(--paper);color:var(--ink);overflow:hidden;fo
 .g4r{padding:5px 0}.g4t{height:26px}.g4n,.g4v{font-size:21px}
 .g4+.g4,.g4+.g4.test{margin-top:22px}
 .proc .hlbox{fill:var(--sun)}
+.pdf-only{display:none}
+.static .pdf-only{display:block}
